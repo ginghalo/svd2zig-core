@@ -13,3 +13,7 @@ defer w.close();
 
 try generator.generate(allocator, &r.reader(), &w.writer());
 ```
+
+## version of zig
+
+0.11.0
