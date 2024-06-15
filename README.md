@@ -8,7 +8,7 @@ build.zig.zon
     // ...
     .dependencies = .{
         .@"svd2zig-core" = .{
-            .url = "https://github.com/ginghalo/svd2zig-core/releases/svd2zig-core.tar.xz",
+            .url = "https://github.com/ginghalo/svd2zig-core/archive/refs/tags/0.1.0.tar.gz",
         },
         // ...
     },
