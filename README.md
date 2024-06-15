@@ -2,21 +2,13 @@
 the core of svd2zig, start from zig version '0.13.0'
 
 ## method of import
-build.zig.zon
-```zig
-.{
-    // ...
-    .dependencies = .{
-        .@"svd2zig-core" = .{
-            .url = "https://github.com/ginghalo/svd2zig-core/archive/refs/tags/0.1.0.tar.gz",
-        },
-        // ...
-    },
-    // ...
-}
+cmd
 ```
-build.zig
+zig fetch https://github.com/ginghalo/svd2zig-core/archive/refs/tags/0.1.0.zip
+```
+zig file
 ```zig
+//! build.zig
 // ...
 pub fn build(b: *std.Build) void {
     // ...
@@ -33,9 +25,9 @@ pub fn build(b: *std.Build) void {
     // ...
 }
 ```
-unitest.zig
 ```zig
-const generator = @import("svd2zig.zig");
+//! unitest.zig
+const generator = @import("svd2zig");
 test "unitest"{
     const readfile_name = "example.svd";
     const writefile_name = "example.zig";
