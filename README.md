@@ -7,7 +7,7 @@ build.zig.zon
 .{
     // ...
     .dependencies = .{
-        .svd2z = .{
+        .@"svd2zig-core" = .{
             .url = "https://github.com/ginghalo/svd2zig-core",
         },
         // ...
