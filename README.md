@@ -21,22 +21,32 @@ pub fn build(b: *std.Build) void {
         .target = target,
         .optimize = optimize,
     });
-    unit_tests.root_module.addImport("svd2zig", @"svd2zig-core".module("svd2zig-core"));
+    unit_tests.root_module.addImport("svd2zig-generator", @"svd2zig-core".module("svd2zig-generator"));
+    unit_tests.root_module.addImport("vector_table-generator", @"svd2zig-core".module("vector_table-generator"));
     // ...
 }
 ```
 ```zig
 //! unitest.zig
-const generator = @import("svd2zig");
-test "unitest"{
-    const readfile_name = "example.svd";
-    const writefile_name = "example.zig";
+const svd2zig_generator = @import("svd2zig-generator");
+test "svd2zig_generator"{
+    const readfile_name = "f103.svd";
+    const writefile_name = "reg-f103.zig";
     var r = try std.fs.cwd().openFile(readfile_name, .{ .mode = .read_only });
     defer r.close();
     var w = try std.fs.cwd().createFile(writefile_name, .{});
     defer w.close();
 
-    try generator.generate(allocator, &r.reader(), &w.writer());
+    try svd2zig_generator.generate(allocator, &r.reader(), &w.writer());
+}
+const vector_table_generator = @import("vector_table-generator");
+test "vector_table_generator"{
+    const reg = @import("reg-f103.zig");
+    const writefile_name = "vector_table-f103.zig";
+    var w = try std.fs.cwd().createFile(writefile_name, .{});
+    defer w.close();
+
+    try vector_table_generator.generate(reg, w.writer(), 60);// 60 is the len of vector table of low/medium/high capatity of stm32f103
 }
 ```
 
