@@ -241,7 +241,7 @@ pub const Peripheral = struct {
             \\/// {s}
             \\pub const {s} = struct {{
             \\
-            \\const base_address = 0x{x};
+            \\pub const base_address = 0x{x};
         , .{ description, name, base_address });
         // now print registers
         for (self.registers.items) |register| {
@@ -467,7 +467,7 @@ pub const Register = struct {
         // print packed struct containing fields
         try out_stream.print(
             \\/// {s}
-            \\const {s}_struct = packed struct {{
+            \\pub const {s}_struct = packed struct {{
         , .{ name, name });
 
         // Sort fields from LSB to MSB for next step
