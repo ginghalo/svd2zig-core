@@ -4,7 +4,7 @@ the core of svd2zig, start from zig version '0.13.0'
 ## method of import
 cmd
 ```
-zig fetch https://github.com/ginghalo/svd2zig-core/archive/refs/tags/0.1.0.zip
+zig fetch https://github.com/ginghalo/svd2zig-core/archive/refs/tags/0.1.1.zip
 ```
 zig file
 ```zig
