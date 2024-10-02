@@ -499,7 +499,7 @@ pub const Register = struct {
             \\
             \\}};
             \\/// {s}
-            \\pub const {s}:*volatile {s}_val = @ptrFromInt(base_address + 0x{x});
+            \\pub const {s}:*volatile {s}_struct = @ptrFromInt(base_address + 0x{x});
         , .{ description, name, name, self.address_offset.? });
 
         return;
