@@ -82,13 +82,13 @@ pub const Device = struct {
             try out_stream.print("{}\n", .{peripheral});
         }
         // now print interrupt table
-        try out_stream.writeAll("pub const interrupts = struct {\n");
+        try out_stream.writeAll("pub const Interrupts = enum {\n");
         var iter = self.interrupts.iterator();
         while (iter.next()) |entry| {
             const interrupt = entry.value_ptr.*;
             if (interrupt.value) |int_value| {
                 try out_stream.print(
-                    "pub const {s} = {};\n",
+                    "{s} = {},\n",
                     .{ interrupt.name.items, int_value },
                 );
             }
