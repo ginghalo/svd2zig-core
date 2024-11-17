@@ -82,7 +82,7 @@ pub const Device = struct {
             try out_stream.print("{}\n", .{peripheral});
         }
         // now print interrupt table
-        try out_stream.writeAll("pub const Interrupts = enum {\n");
+        try out_stream.writeAll("pub const Interrupts = enum(u8) {\n");
         var iter = self.interrupts.iterator();
         while (iter.next()) |entry| {
             const interrupt = entry.value_ptr.*;
